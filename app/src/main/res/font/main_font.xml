@@ -11,7 +11,7 @@
         android:font="@font/font_main"/>
 
     <font
-        android:font="@font/nunitoSans10ptBold"
+        android:font="@font/nunitosans10ptbold"
         android:fontWeight="400"
         android:fontStyle="normal"/>
 
