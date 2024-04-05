@@ -56,7 +56,7 @@ tools:context=".activites.RegisterActivity">
             android:textColorHighlight="@color/cardview_dark_background" />
 
         <EditText
-            android:id="@+id/lname"
+            android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"

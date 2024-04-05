@@ -9,12 +9,13 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.hellosunshine.R;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText fName, lName, email;
+    EditText fullName, userName, email, password, cPassword;
 
     Button btnContinue;
 
@@ -30,19 +31,35 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        fName = findViewById(R.id.fullname);
-        lName = findViewById(R.id.lname);
+        fullName = findViewById(R.id.fullname);
+        userName = findViewById(R.id.username);
         email = findViewById(R.id.email);
+        password = findViewById(R.id.password);
+        cPassword = findViewById(R.id.retype_password);
+
 
         btnContinue = findViewById(R.id.btnContinue);
 
         btnContinue.setOnClickListener(v -> {
-            String firstName = fName.getText().toString();
-            String lastName = lName.getText().toString();
-            String emailAd = email.getText().toString();
 
-            startActivity(new Intent(RegisterActivity.this, RegisterConActivity.class).putExtra("Fname, Lname, email", new String[]{firstName, lastName, emailAd}));
+            String fName = fullName.getText().toString();
+            String uName = userName.getText().toString();
+            String emailAdd = email.getText().toString();
+            String pass = password.getText().toString();
+            String rePass = cPassword.getText().toString();
 
+            if (!rePass.equals(pass)) {
+                Toast toastPass = Toast.makeText(RegisterActivity.this, "Passwords don't match", Toast.LENGTH_SHORT);
+                toastPass.show();
+            } else if(fName.length() == 0) {
+                Toast toastFName = Toast.makeText(RegisterActivity.this, "Please enter full name", Toast.LENGTH_SHORT);
+                toastFName.show();
+            } else if(uName.length() == 0) {
+                Toast toastUName = Toast.makeText(RegisterActivity.this, "Please enter a valid username", Toast.LENGTH_SHORT);
+                toastUName.show();
+            } else {
+                startActivity(new Intent(RegisterActivity.this, NewUserChildActivity.class).putExtra("newAccountInfo", new String[]{fName, uName, emailAdd, pass}));
+            }
 
         });
 

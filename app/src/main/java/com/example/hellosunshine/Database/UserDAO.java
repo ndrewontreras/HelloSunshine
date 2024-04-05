@@ -1,5 +1,6 @@
 package com.example.hellosunshine.Database;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -27,6 +28,9 @@ public interface UserDAO {
 
     @Query ("select * from users where user_id==:user_id")
     User getUser(int user_id);
+
+    @Query("SELECT * FROM users ORDER BY users.username ASC")
+    LiveData<List<User>> getAlphabetizedUsers();
 
 
 

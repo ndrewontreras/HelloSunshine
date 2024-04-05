@@ -14,13 +14,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center|top"
-        android:fontFamily="@font/font_main"
-        android:paddingTop="50dp"
-        android:paddingBottom="25dp"
-        android:text="Register"
+        android:fontFamily="@font/font"
+        android:paddingTop="70dp"
+        android:paddingBottom="50dp"
+        android:text="Add your first child"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="55dp" />
+        android:textSize="39dp" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/registerCardView"
@@ -41,82 +41,131 @@
             android:padding="24dp">
 
             <EditText
-                android:id="@+id/fullname"
+                android:id="@+id/first_name"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/custom_edittext"
-                android:drawableLeft="@drawable/baseline_drive_file_rename_outline_24"
+                android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
-                android:hint="Full Name"
+                android:hint="First Name"
                 android:padding="8dp"
                 android:textColor="@color/black"
+                android:fontFamily="@font/font"
                 android:textColorHighlight="@color/cardview_dark_background" />
 
             <EditText
-                android:id="@+id/lname"
+                android:id="@+id/n_name"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/custom_edittext"
+                android:drawableLeft="@drawable/baseline_drive_file_rename_outline_24"
+                android:drawablePadding="8dp"
+                android:hint="Nickname"
+                android:padding="8dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/font"
+                android:textColorHighlight="@color/cardview_dark_background" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/baseline_calendar_today_24"
+                android:drawablePadding="8dp"
+                android:text="Date of Birth"
+                android:textSize="18sp"
+                android:fontFamily="@font/font"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:padding="8dp">
+
+                <EditText
+                    android:id="@+id/day"
+                    android:layout_width="100dp"
+                    android:layout_height="45dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/custom_edittext"
+                    android:drawablePadding="8dp"
+                    android:hint="Day"
+                    android:padding="12dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/font"
+                    android:inputType="number"
+                    android:textColorHighlight="@color/cardview_dark_background" />
+
+                <EditText
+                    android:id="@+id/month"
+                    android:layout_width="120dp"
+                    android:layout_height="45dp"
+                    android:layout_marginRight="7dp"
+                    android:background="@drawable/custom_edittext"
+                    android:drawablePadding="8dp"
+                    android:hint="Month"
+                    android:padding="12dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/font"
+                    android:inputType="number"
+                    android:textColorHighlight="@color/cardview_dark_background" />
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/year"
+                android:layout_width="150dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:layout_gravity="center"
+                android:background="@drawable/custom_edittext"
+                android:drawablePadding="8dp"
+                android:hint="Year"
+                android:padding="12dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/font"
+                android:inputType="number"
+                android:textColorHighlight="@color/cardview_dark_background" />
+
+
+
+            <EditText
+                android:id="@+id/gender"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/custom_edittext"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
-                android:hint="Username"
+                android:hint="Gender"
                 android:padding="8dp"
                 android:textColor="@color/black"
+                android:fontFamily="@font/font"
+
+
                 android:textColorHighlight="@color/cardview_dark_background" />
 
-            <EditText
-                android:id="@+id/email"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/custom_edittext"
-                android:drawableLeft="@drawable/baseline_email_24"
-                android:drawablePadding="8dp"
-                android:hint="E-mail"
-                android:padding="8dp"
-                android:textColor="@color/black"
-                android:textColorHighlight="@color/cardview_dark_background" />
 
-            <EditText
-                android:id="@+id/password"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/custom_edittext"
-                android:drawableLeft="@drawable/baseline_lock_24"
-                android:drawablePadding="8dp"
-                android:hint="Password"
-                android:inputType="textPassword"
-                android:padding="8dp"
-                android:textColor="@color/black"
-                android:textColorHighlight="@color/cardview_dark_background" />
-
-            <EditText
-                android:id="@+id/retype_password"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/custom_edittext"
-                android:drawableLeft="@drawable/baseline_lock_24"
-                android:drawablePadding="8dp"
-                android:hint="Confirm Password"
-                android:inputType="textPassword"
-                android:padding="8dp"
-                android:textColor="@color/lightgray"
-                android:textColorHighlight="@color/cardview_dark_background" />
 
 
             <Button
-                android:id="@+id/btnContinue"
+                android:id="@+id/btnRegister"
                 android:layout_width="150dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="30dp"
                 android:layout_gravity="center"
-                android:backgroundTint="@color/babyBlue"
+                android:backgroundTint="@color/babyRed"
                 android:onClick="login"
                 android:text="Register"
+                android:textStyle="normal"
+                android:fontFamily="@font/font"
                 android:textSize="18dp" />
 
 
