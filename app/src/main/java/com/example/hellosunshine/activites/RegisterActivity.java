@@ -59,6 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
                 toastUName.show();
             } else {
                 startActivity(new Intent(RegisterActivity.this, NewUserChildActivity.class).putExtra("newAccountInfo", new String[]{fName, uName, emailAdd, pass}));
+                finish();
             }
 
         });

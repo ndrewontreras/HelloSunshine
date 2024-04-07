@@ -59,15 +59,23 @@ public class NewUserChildActivity extends AppCompatActivity {
             String cMonth = childMonth.getText().toString();
             String cYear = childYear.getText().toString();
 
+            String fName = values[0];
+            String uName = values[1];
+            String email = values[2];
+            String pass = values[3];
+
+
 
             if(true) {
                 Toast toast = Toast.makeText(NewUserChildActivity.this, "Passwords don't match", Toast.LENGTH_SHORT);
                 toast.show();
             } else {
-                startActivity(new Intent(NewUserChildActivity.this, NewUserChildActivity.class).putExtra("newChildInfo", new String[]{cName, cNickname, cDay, cMonth, cYear}));
+                startActivity(new Intent(NewUserChildActivity.this, NewUserChildActivity.class).putExtra("newChildInfo", new String[]{fName, uName, email, pass, cName, cNickname, cDate, cDay, cMonth, cYear}));
             }
         });
 
 
     }
+
+
 }

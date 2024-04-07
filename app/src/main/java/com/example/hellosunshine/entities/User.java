@@ -31,10 +31,12 @@ public class User implements Serializable {
 
     }
 
-    public User(String uname, String password) {
-        this.uName = uname;
-        this.pass = password;
-        this.id = 0;
+    public User(String fullName, String uName, String email, String pass) {
+        this.uName = uName;
+        this.email = email;
+        this.pass = pass;
+        this.fullName = fullName;
+
     }
 
 

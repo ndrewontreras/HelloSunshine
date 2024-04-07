@@ -18,10 +18,10 @@ public class HSViewModel extends AndroidViewModel {
     public HSViewModel (Application application) {
         super(application);
         mRepository = new HSRepository(application);
-        mAllUsers = mRepository.getAllWords();
+        mAllUsers = mRepository.getAllUsers();
     }
 
-    LiveData<List<User>> getAllWords() { return mAllUsers; }
+    LiveData<List<User>> getAllUsers() { return mAllUsers; }
 
     public void insert(User user) { mRepository.insert(user); }
 }

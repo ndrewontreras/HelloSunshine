@@ -5,23 +5,33 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity(tableName = "child", foreignKeys = {@ForeignKey(entity = User.class, parentColumns = "user_id",
         childColumns = "user_id", onDelete = ForeignKey.CASCADE, onUpdate = ForeignKey.CASCADE)})
 
-public class Child {
+public class Child implements Serializable {
 
     @PrimaryKey (autoGenerate = true)
     int id = 0;
 
-
     @ColumnInfo (name = "f_name")
     String fName = " ";
+
+    @ColumnInfo (name = "nickname")
+    String nickname = " ";
 
     @ColumnInfo(name = "age")
     String age =" ";
 
     @ColumnInfo (name = "user_id")
     int userId;
+
+    public Child(String fName, String nickname, String age) {
+        this.fName = fName;
+        this.nickname = nickname;
+        this.age = age;
+    }
 
     public int getId() {
         return id;
@@ -53,5 +63,13 @@ public class Child {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 }
