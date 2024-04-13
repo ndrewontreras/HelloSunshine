@@ -5,14 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Toast;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.example.hellosunshine.Database.HSViewModel;
+import com.example.hellosunshine.Database.UserViewModel;
 import com.example.hellosunshine.R;
 import com.example.hellosunshine.entities.Child;
 import com.example.hellosunshine.entities.User;
@@ -34,12 +31,12 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String[] values = intent.getStringArrayExtra("newChildInfo");
 
-        user = new User(values[0], values[1], values[2], values[3]);
-        child = new Child(values[4], values[5], values[6]);
+        //user = new User(values[0], values[1], values[2], values[3]);
+        child = new Child(values[3], values[4], values[5]);
 
 
 
-        System.out.println(user.getFullName() + " " + user.getUName() + " " + user.getEmail() + " " + child.getNickname() + " Child ID: " + child.getId());
+        //System.out.println(user.getFullName() + " " + user.getUName() + " " + user.getEmail() + " " + child.getNickname() + " Child ID: " + child.getId());
 
 
         intent.putExtra("new user", user);
@@ -47,7 +44,7 @@ public class HomeActivity extends AppCompatActivity {
         setResult(Activity.RESULT_OK, intent);
 
 
-        HSViewModel viewModel = ViewModelProviders.of(this).get(HSViewModel.class);
+        UserViewModel viewModel = ViewModelProviders.of(this).get(UserViewModel.class);
         viewModel.insert(user);
         System.out.println(viewModel.getAllUsers().toString());
 

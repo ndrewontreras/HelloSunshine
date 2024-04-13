@@ -16,7 +16,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @Database(entities = {User.class, Child.class, ShoppingListItem.class, ToDoTasks.class, JournalEntries.class},
-        version = 1)
+        version = 2)
 public abstract class HelloSunshineDB extends RoomDatabase {
     /*
     private static HelloSunshineDB database;
@@ -34,6 +34,8 @@ public abstract class HelloSunshineDB extends RoomDatabase {
      */
 
     public abstract UserDAO userDao();
+
+    public abstract ChildDAO childDao();
 
     private static volatile HelloSunshineDB INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;

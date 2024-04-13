@@ -9,15 +9,15 @@ import com.example.hellosunshine.entities.User;
 
 import java.util.List;
 
-public class HSViewModel extends AndroidViewModel {
+public class UserViewModel extends AndroidViewModel {
 
-    private HSRepository mRepository;
+    private UserRepository mRepository;
 
     private final LiveData<List<User>> mAllUsers;
 
-    public HSViewModel (Application application) {
+    public UserViewModel(Application application) {
         super(application);
-        mRepository = new HSRepository(application);
+        mRepository = new UserRepository(application);
         mAllUsers = mRepository.getAllUsers();
     }
 

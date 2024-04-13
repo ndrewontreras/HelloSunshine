@@ -43,7 +43,6 @@ public class RegisterActivity extends AppCompatActivity {
         btnContinue.setOnClickListener(v -> {
 
             String fName = fullName.getText().toString();
-            String uName = userName.getText().toString();
             String emailAdd = email.getText().toString();
             String pass = password.getText().toString();
             String rePass = cPassword.getText().toString();
@@ -54,11 +53,8 @@ public class RegisterActivity extends AppCompatActivity {
             } else if(fName.length() == 0) {
                 Toast toastFName = Toast.makeText(RegisterActivity.this, "Please enter full name", Toast.LENGTH_SHORT);
                 toastFName.show();
-            } else if(uName.length() == 0) {
-                Toast toastUName = Toast.makeText(RegisterActivity.this, "Please enter a valid username", Toast.LENGTH_SHORT);
-                toastUName.show();
             } else {
-                startActivity(new Intent(RegisterActivity.this, NewUserChildActivity.class).putExtra("newAccountInfo", new String[]{fName, uName, emailAdd, pass}));
+                startActivity(new Intent(RegisterActivity.this, NewUserChildActivity.class).putExtra("newAccountInfo", new String[]{fName, emailAdd, pass}));
                 finish();
             }
 

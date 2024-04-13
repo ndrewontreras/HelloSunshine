@@ -20,8 +20,6 @@ public class User implements Serializable {
     @ColumnInfo(name = "email")
     String email =" ";
 
-    @ColumnInfo(name = "username")
-    String uName =" ";
 
     @ColumnInfo(name = "pass")
     String pass =" ";
@@ -31,8 +29,7 @@ public class User implements Serializable {
 
     }
 
-    public User(String fullName, String uName, String email, String pass) {
-        this.uName = uName;
+    public User(String email, String pass, String fullName) {
         this.email = email;
         this.pass = pass;
         this.fullName = fullName;
@@ -43,9 +40,7 @@ public class User implements Serializable {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public void setId(int id) { this.id = id; }
 
     public String getFullName() {
         return fullName;
@@ -61,14 +56,6 @@ public class User implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getUName() {
-        return uName;
-    }
-
-    public void setUName(String uName) {
-        this.uName = uName;
     }
 
     public String getPass() {

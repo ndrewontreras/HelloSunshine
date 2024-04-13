@@ -29,11 +29,11 @@ public interface UserDAO {
     @Query ("select * from users where user_id==:user_id")
     User getUser(int user_id);
 
-    @Query("SELECT * FROM users ORDER BY users.username ASC")
+    @Query("SELECT * FROM users ORDER BY users.fullName ASC")
     LiveData<List<User>> getAlphabetizedUsers();
 
-    @Query("SELECT * FROM users WHERE username = :username")
-    User getUserByUsername(String username);
+    @Query("SELECT * FROM users WHERE fullName = :fullName")
+    User getUserByName(String fullName);
 
 
 

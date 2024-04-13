@@ -2,6 +2,7 @@ package com.example.hellosunshine.activites;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.hellosunshine.Database.AuthViewModel;
 import com.example.hellosunshine.Database.HelloSunshineDB;
 import com.example.hellosunshine.Database.UserDAO;
 import com.example.hellosunshine.R;
@@ -53,7 +55,6 @@ public class NewUserChildActivity extends AppCompatActivity {
         childYear = findViewById(R.id.year);
 
 
-
         Intent intent = getIntent();
         String[] values = intent.getStringArrayExtra("newAccountInfo");
 
@@ -70,55 +71,32 @@ public class NewUserChildActivity extends AppCompatActivity {
             String cYear = childYear.getText().toString();
 
             String fName = values[0];
-            String uName = values[1];
-            String email = values[2];
-            String pass = values[3];
+            String email = values[1];
+            String pass = values[2];
 
-            mAuth.createUserWithEmailAndPassword(email, pass)
-                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                FirebaseUser firebaseUser = mAuth.getCurrentUser();
-                                // Sign in success, update UI with the signed-in user's information
-                                if(user != null) {
-                                    String userEmail = firebaseUser.getEmail();
+            AuthViewModel authViewModel = new ViewModelProvider(this).get(AuthViewModel.class);
 
-                                    Executors.newSingleThreadExecutor().execute(() -> {
-                                        UserDAO userDao = AppDatabase.getInstance(context).userDao();
-                                        User user = new User(userEmail, username);
-                                        userDao.insert(user);
-                                        // Perform action on UI thread if needed
-                                        runOnUiThread(() -> {
-                                            // Proceed with the appropriate action in your app
-                                            // For example, navigate to the main activity
-                                        });
-                                    });
+            authViewModel.registerUser(email, pass, fName, task -> {
+                if (task.isSuccessful()) {
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    Toast.makeText(getApplicationContext(), "New User created", Toast.LENGTH_SHORT).show();
+                } else {
+                    Exception e = task.getException();
+                    Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
 
-                                }
+           /*
+            if (cName.length() == 0) {
 
-
-                            } else {
-                                // If sign in fails, display a message to the user.
-                                Toast.makeText(MainActivity.this, "Authentication failed.",
-                                        Toast.LENGTH_SHORT).show();
-
-                            }
-                        }
-                    });
-
-
-
-            if(true) {
-                Toast toast = Toast.makeText(NewUserChildActivity.this, "Passwords don't match", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(NewUserChildActivity.this, "Name?", Toast.LENGTH_SHORT);
                 toast.show();
             } else {
-                startActivity(new Intent(NewUserChildActivity.this, NewUserChildActivity.class).putExtra("newChildInfo", new String[]{fName, uName, email, pass, cName, cNickname, cDate, cDay, cMonth, cYear}));
+                startActivity(new Intent(NewUserChildActivity.this, NewUserChildActivity.class).putExtra("newChildInfo", new String[]{fName, email, pass, cName, cNickname, cDate, cDay, cMonth, cYear}));
             }
+
+            */
+
         });
-
-
     }
-
-
 }

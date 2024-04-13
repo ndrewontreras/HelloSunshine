@@ -2,13 +2,12 @@ package com.example.hellosunshine.activites;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,7 +18,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.hellosunshine.Database.HSViewModel;
+import com.example.hellosunshine.Database.AuthViewModel;
+import com.example.hellosunshine.Database.UserViewModel;
 import com.example.hellosunshine.Database.HelloSunshineDB;
 import com.example.hellosunshine.Database.UserDAO;
 import com.example.hellosunshine.R;
@@ -78,8 +78,9 @@ public class MainActivity extends AppCompatActivity {
         helloSunshineDB = Room.databaseBuilder(getApplicationContext(), HelloSunshineDB.class,
                 "HelloSunshineDB").addCallback(myCallback).build();
 
-        User testUser = new User("Test Name1", "testuName1", "test1@email.com", "testpass1");
-        HSViewModel viewModel = ViewModelProviders.of(this).get(HSViewModel.class);
+        //addCallback(myCallback)
+        User testUser = new User("test1@email.com", "testpass1", "Test Name1");
+        UserViewModel viewModel = ViewModelProviders.of(this).get(UserViewModel.class);
         viewModel.insert(testUser);
         viewModel.getAllUsers().observe(this, userList -> {
                 Log.d("usersTest", ": " + userList.size());
@@ -106,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
                     //startActivity(new Intent(MainActivity.this, HomeActivity.class));
                 }
 
-
+                /*
                 mAuth.signInWithEmailAndPassword(uname, pword)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
@@ -116,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
                                     // Sign in success, update UI with the signed-in user's information
                                     if(user != null) {
                                         UserDAO userDAO = HelloSunshineDB.getDatabase(MainActivity.this).userDao();
-                                        User userData = userDAO.getUserByUsername(user.getEmail());
+                                        User userData = userDAO.getUserByName(user.getEmail());
                                         Toast.makeText(getApplicationContext(), "Logged In", Toast.LENGTH_SHORT).show();
                                     }
 
@@ -130,7 +131,24 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
 
+                 */
+
+                AuthViewModel authViewModel = new ViewModelProvider(MainActivity.this).get(AuthViewModel.class);
+
+                authViewModel.loginUser(uname, pword, task -> {
+                    if (task.isSuccessful()) {
+                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                        Toast.makeText(getApplicationContext(), "Logged in", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Exception e = task.getException();
+                        Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
             }
+
+
         });
 
          register.setOnClickListener(new View.OnClickListener() {

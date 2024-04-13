@@ -16,7 +16,7 @@ public class Child implements Serializable {
     int id = 0;
 
     @ColumnInfo (name = "f_name")
-    String fName = " ";
+    String name = " ";
 
     @ColumnInfo (name = "nickname")
     String nickname = " ";
@@ -27,8 +27,12 @@ public class Child implements Serializable {
     @ColumnInfo (name = "user_id")
     int userId;
 
+    public Child() {
+
+    }
+
     public Child(String fName, String nickname, String age) {
-        this.fName = fName;
+        this.name = fName;
         this.nickname = nickname;
         this.age = age;
     }
@@ -41,12 +45,12 @@ public class Child implements Serializable {
         this.id = id;
     }
 
-    public String getfName() {
-        return fName;
+    public String getName() {
+        return name;
     }
 
-    public void setfName(String fName) {
-        this.fName = fName;
+    public void setName(String fName) {
+        this.name = name;
     }
 
     public String getAge() {
