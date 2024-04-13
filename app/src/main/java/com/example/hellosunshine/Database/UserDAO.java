@@ -32,6 +32,13 @@ public interface UserDAO {
     @Query("SELECT * FROM users ORDER BY users.username ASC")
     LiveData<List<User>> getAlphabetizedUsers();
 
+    @Query("SELECT * FROM users WHERE username = :username")
+    User getUserByUsername(String username);
+
+
+
+
+
 
 
 

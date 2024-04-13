@@ -40,7 +40,7 @@ public abstract class HelloSunshineDB extends RoomDatabase {
     static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
-    static HelloSunshineDB getDatabase(final Context context) {
+    public static HelloSunshineDB getDatabase(final Context context) {
         if (INSTANCE == null) {
             synchronized (HelloSunshineDB.class) {
                 if (INSTANCE == null) {
@@ -53,9 +53,8 @@ public abstract class HelloSunshineDB extends RoomDatabase {
         return INSTANCE;
     }
 
-    /*
-    public abstract UserDAO getUserDAO();
 
-     */
+
+
 
 }

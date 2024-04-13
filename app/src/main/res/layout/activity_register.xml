@@ -81,6 +81,7 @@ tools:context=".activites.RegisterActivity">
             android:padding="8dp"
             android:textColor="@color/black"
             android:fontFamily="@font/font"
+            android:inputType="textEmailAddress"
             android:textColorHighlight="@color/cardview_dark_background" />
 
         <EditText
@@ -123,7 +124,8 @@ tools:context=".activites.RegisterActivity">
             android:backgroundTint="@color/babyRed"
             android:onClick="login"
             android:text="Continue"
-            android:fontFamily="@font/font"            android:textSize="18dp" />
+            android:fontFamily="@font/font"
+            android:textSize="18dp" />
 
 
     </LinearLayout>

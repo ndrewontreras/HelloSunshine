@@ -35,10 +35,9 @@ public class HomeActivity extends AppCompatActivity {
         String[] values = intent.getStringArrayExtra("newChildInfo");
 
         user = new User(values[0], values[1], values[2], values[3]);
+        child = new Child(values[4], values[5], values[6]);
 
-        child.setfName(values[4]);
-        child.setNickname(values[5]);
-        child.setAge(values[6]);
+
 
         System.out.println(user.getFullName() + " " + user.getUName() + " " + user.getEmail() + " " + child.getNickname() + " Child ID: " + child.getId());
 
@@ -49,6 +48,8 @@ public class HomeActivity extends AppCompatActivity {
 
 
         HSViewModel viewModel = ViewModelProviders.of(this).get(HSViewModel.class);
+        viewModel.insert(user);
+        System.out.println(viewModel.getAllUsers().toString());
 
 
 

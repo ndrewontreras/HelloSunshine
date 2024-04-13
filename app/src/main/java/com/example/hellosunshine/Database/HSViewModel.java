@@ -21,7 +21,7 @@ public class HSViewModel extends AndroidViewModel {
         mAllUsers = mRepository.getAllUsers();
     }
 
-    LiveData<List<User>> getAllUsers() { return mAllUsers; }
+    public LiveData<List<User>> getAllUsers() { return mAllUsers; }
 
     public void insert(User user) { mRepository.insert(user); }
 }

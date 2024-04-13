@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id ("com.google.devtools.ksp") version "1.9.22-1.0.17"
     id("kotlin-android")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -36,14 +37,11 @@ android {
 
 dependencies {
 
+    implementation("com.google.firebase:firebase-auth:22.3.1")
     val room_version = "2.6.1"
 
     implementation("androidx.room:room-runtime:$room_version")
     ksp("androidx.room:room-compiler:$room_version")
-    // To use Kotlin annotation processing tool (kapt)
-    //kapt("androidx.room:room-compiler:$room_version")
-    // To use Kotlin Symbol Processing (KSP)
-
 
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
