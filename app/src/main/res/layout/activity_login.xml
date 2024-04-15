@@ -7,7 +7,7 @@
     android:background="@drawable/login_background"
     android:gravity="top"
     android:orientation="vertical"
-    tools:context=".activites.MainActivity">
+    tools:context=".activites.login.LoginActivity">
 
 
     <TextView
@@ -50,7 +50,7 @@
                 android:background="@drawable/custom_edittext"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
-                android:hint="Username"
+                android:hint="email"
                 android:fontFamily="@font/font"
                 android:padding="8dp"
                 android:textColor="@color/black"
@@ -64,7 +64,7 @@
                 android:background="@drawable/custom_edittext"
                 android:drawableLeft="@drawable/baseline_lock_24"
                 android:drawablePadding="8dp"
-                android:hint="Password"
+                android:hint="password"
                 android:inputType="textPassword"
                 android:fontFamily="@font/font"
                 android:padding="8dp"
@@ -77,11 +77,11 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="30dp"
                 android:backgroundTint="@color/babyBlue"
-                android:text="Login"
+                android:text="login"
                 android:fontFamily="@font/font"
                 android:textSize="18dp"
+                android:textColor="@color/white"
                 android:onClick="login" />
-
 
         </LinearLayout>
 
@@ -92,8 +92,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Register"
+        android:text="register"
         android:fontFamily="@font/font"
+        android:textColor="@color/white"
         android:textAlignment="center"
         android:backgroundTint="@color/babyRed"/>
 

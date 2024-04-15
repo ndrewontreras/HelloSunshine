@@ -7,7 +7,7 @@ android:layout_height="match_parent"
 android:background="@drawable/login_background"
 android:gravity="top"
 android:orientation="vertical"
-tools:context=".activites.RegisterActivity">
+tools:context=".activites.register.RegisterActivity">
 
 
 <TextView
@@ -17,8 +17,8 @@ tools:context=".activites.RegisterActivity">
     android:layout_gravity="center|top"
     android:fontFamily="@font/font"
     android:paddingTop="50dp"
-    android:paddingBottom="50dp"
-    android:text="Register"
+    android:paddingBottom="60dp"
+    android:text="register"
     android:textAlignment="center"
     android:textColor="@color/white"
     android:textSize="55sp" />
@@ -44,40 +44,27 @@ tools:context=".activites.RegisterActivity">
         <EditText
             android:id="@+id/fullname"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="55dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/custom_edittext"
             android:drawableLeft="@drawable/baseline_drive_file_rename_outline_24"
             android:drawablePadding="8dp"
-            android:hint="Full Name"
+            android:hint="full name"
             android:padding="8dp"
             android:textColor="@color/black"
             android:fontFamily="@font/font"
             android:textColorHighlight="@color/cardview_dark_background" />
 
-        <EditText
-            android:id="@+id/username"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/custom_edittext"
-            android:drawableLeft="@drawable/baseline_person_24"
-            android:drawablePadding="8dp"
-            android:hint="Username"
-            android:padding="8dp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/font"
-            android:textColorHighlight="@color/cardview_dark_background" />
 
         <EditText
             android:id="@+id/email"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="55dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/custom_edittext"
             android:drawableLeft="@drawable/baseline_email_24"
             android:drawablePadding="8dp"
-            android:hint="E-mail"
+            android:hint="e-mail"
             android:padding="8dp"
             android:textColor="@color/black"
             android:fontFamily="@font/font"
@@ -87,12 +74,12 @@ tools:context=".activites.RegisterActivity">
         <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="55dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/custom_edittext"
             android:drawableLeft="@drawable/baseline_lock_24"
             android:drawablePadding="8dp"
-            android:hint="Password"
+            android:hint="password"
             android:inputType="textPassword"
             android:padding="8dp"
             android:textColor="@color/black"
@@ -102,15 +89,15 @@ tools:context=".activites.RegisterActivity">
         <EditText
             android:id="@+id/retype_password"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="55dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/custom_edittext"
             android:drawableLeft="@drawable/baseline_lock_24"
             android:drawablePadding="8dp"
-            android:hint="Confirm Password"
+            android:hint="confirm password"
             android:inputType="textPassword"
             android:padding="8dp"
-            android:textColor="@color/lightgray"
+            android:textColor="@color/black"
             android:fontFamily="@font/font"
             android:textColorHighlight="@color/cardview_dark_background" />
 
@@ -123,8 +110,9 @@ tools:context=".activites.RegisterActivity">
             android:layout_gravity="center"
             android:backgroundTint="@color/babyRed"
             android:onClick="login"
-            android:text="Continue"
+            android:text="continue"
             android:fontFamily="@font/font"
+            android:textColor="@color/white"
             android:textSize="18dp" />
 
 

@@ -1,4 +1,4 @@
-package com.example.hellosunshine.activites;
+package com.example.hellosunshine.activites.home;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,12 +7,14 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.example.hellosunshine.Database.UserViewModel;
+import com.example.hellosunshine.Database.viewmodels.ChildViewModel;
+import com.example.hellosunshine.Database.viewmodels.UserViewModel;
 import com.example.hellosunshine.R;
-import com.example.hellosunshine.entities.Child;
-import com.example.hellosunshine.entities.User;
+import com.example.hellosunshine.Database.entities.Child;
+import com.example.hellosunshine.Database.entities.User;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -26,14 +28,17 @@ public class HomeActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_first_child);
+        setContentView(R.layout.activity_home);
 
+        /*
         Intent intent = getIntent();
         String[] values = intent.getStringArrayExtra("newChildInfo");
+        boolean gender = intent.getBooleanExtra("gender", false);
 
-        //user = new User(values[0], values[1], values[2], values[3]);
-        child = new Child(values[3], values[4], values[5]);
 
+        child = new Child(values[3], values[4], values[5], gender);
+        ChildViewModel viewModel1 = new ViewModelProvider(HomeActivity.this).get(ChildViewModel.class);
+        viewModel1.insert(child);
 
 
         //System.out.println(user.getFullName() + " " + user.getUName() + " " + user.getEmail() + " " + child.getNickname() + " Child ID: " + child.getId());
@@ -42,21 +47,7 @@ public class HomeActivity extends AppCompatActivity {
         intent.putExtra("new user", user);
         intent.putExtra("new child", child);
         setResult(Activity.RESULT_OK, intent);
-
-
-        UserViewModel viewModel = ViewModelProviders.of(this).get(UserViewModel.class);
-        viewModel.insert(user);
-        System.out.println(viewModel.getAllUsers().toString());
-
-
-
-
-
-
-
-
-
-
+         */
 
     }
 

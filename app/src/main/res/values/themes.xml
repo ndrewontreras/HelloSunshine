@@ -3,6 +3,19 @@
     <style name="Base.Theme.HelloSunshine" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimaryVariant">@color/babyRed</item>
+        <item name="colorOnPrimary">@color/babyBlue</item>
+    </style>
+
+    <style name="BrandedSwitch.text" parent="Theme.AppCompat.Light">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontFamily">@font/font</item>
+    </style>
+    <style name="BrandedSwitch.control" parent="Theme.AppCompat.Light">
+        <!-- active thumb & track color (30% transparency) -->
+        <item name="colorControlActivated">#e6e600</item>
+        <item name="colorSwitchThumbNormal">#cc0000</item>
     </style>
 
     <style name="Theme.HelloSunshine" parent="Base.Theme.HelloSunshine" />

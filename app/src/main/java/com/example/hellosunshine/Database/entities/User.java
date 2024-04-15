@@ -1,4 +1,4 @@
-package com.example.hellosunshine.entities;
+package com.example.hellosunshine.Database.entities;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

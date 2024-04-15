@@ -6,11 +6,13 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import com.example.hellosunshine.entities.Child;
-import com.example.hellosunshine.entities.JournalEntries;
-import com.example.hellosunshine.entities.ShoppingListItem;
-import com.example.hellosunshine.entities.ToDoTasks;
-import com.example.hellosunshine.entities.User;
+import com.example.hellosunshine.Database.daos.ChildDAO;
+import com.example.hellosunshine.Database.daos.UserDAO;
+import com.example.hellosunshine.Database.entities.Child;
+import com.example.hellosunshine.Database.entities.JournalEntries;
+import com.example.hellosunshine.Database.entities.ShoppingListItem;
+import com.example.hellosunshine.Database.entities.ToDoTasks;
+import com.example.hellosunshine.Database.entities.User;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -39,7 +41,7 @@ public abstract class HelloSunshineDB extends RoomDatabase {
 
     private static volatile HelloSunshineDB INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
-    static final ExecutorService databaseWriteExecutor =
+    public static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
     public static HelloSunshineDB getDatabase(final Context context) {

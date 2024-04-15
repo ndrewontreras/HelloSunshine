@@ -1,4 +1,4 @@
-package com.example.hellosunshine.entities;
+package com.example.hellosunshine.Database.entities;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -24,6 +24,9 @@ public class Child implements Serializable {
     @ColumnInfo(name = "age")
     String age =" ";
 
+    @ColumnInfo(name = "gender")
+    boolean gender = false;
+
     @ColumnInfo (name = "user_id")
     int userId;
 
@@ -31,10 +34,11 @@ public class Child implements Serializable {
 
     }
 
-    public Child(String fName, String nickname, String age) {
+    public Child(String fName, String nickname, String age, Boolean gender) {
         this.name = fName;
         this.nickname = nickname;
         this.age = age;
+        this.gender = gender;
     }
 
     public int getId() {
@@ -75,5 +79,13 @@ public class Child implements Serializable {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    public Boolean getGender() {
+        return gender;
+    }
+
+    public void setGender(Boolean gender) {
+        this.gender = gender;
     }
 }

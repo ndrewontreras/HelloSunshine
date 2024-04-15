@@ -1,10 +1,12 @@
-package com.example.hellosunshine.Database;
+package com.example.hellosunshine.Database.repositories;
 
 import android.app.Application;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.hellosunshine.entities.User;
+import com.example.hellosunshine.Database.HelloSunshineDB;
+import com.example.hellosunshine.Database.daos.UserDAO;
+import com.example.hellosunshine.Database.entities.User;
 
 import java.util.List;
 
@@ -16,7 +18,7 @@ public class UserRepository {
     // dependency. This adds complexity and much more code, and this sample is not about testing.
     // See the BasicSample in the android-architecture-components repository at
     // https://github.com/googlesamples
-    UserRepository(Application application) {
+    public UserRepository(Application application) {
         HelloSunshineDB db = HelloSunshineDB.getDatabase(application);
         mUserDao = db.userDao();
         mAllUsers = mUserDao.getAlphabetizedUsers();
@@ -24,13 +26,13 @@ public class UserRepository {
 
     // Room executes all queries on a separate thread.
     // Observed LiveData will notify the observer when the data has changed.
-    LiveData<List<User>> getAllUsers() {
+    public LiveData<List<User>> getAllUsers() {
         return mAllUsers;
     }
 
     // You must call this on a non-UI thread or your app will throw an exception. Room ensures
     // that you're not doing any long running operations on the main thread, blocking the UI.
-    void insert(User user) {
+    public void insert(User user) {
         HelloSunshineDB.databaseWriteExecutor.execute(() -> {
             mUserDao.addUser(user);
         });

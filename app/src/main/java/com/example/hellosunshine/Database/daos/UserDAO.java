@@ -1,4 +1,4 @@
-package com.example.hellosunshine.Database;
+package com.example.hellosunshine.Database.daos;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
@@ -8,7 +8,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.hellosunshine.entities.User;
+import com.example.hellosunshine.Database.entities.User;
 
 import java.util.List;
 

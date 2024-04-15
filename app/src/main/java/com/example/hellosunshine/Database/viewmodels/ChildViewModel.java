@@ -1,12 +1,12 @@
-package com.example.hellosunshine.Database;
+package com.example.hellosunshine.Database.viewmodels;
 
 import android.app.Application;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.example.hellosunshine.entities.Child;
-import com.example.hellosunshine.entities.User;
+import com.example.hellosunshine.Database.repositories.ChildRepository;
+import com.example.hellosunshine.Database.entities.Child;
 
 import java.util.List;
 

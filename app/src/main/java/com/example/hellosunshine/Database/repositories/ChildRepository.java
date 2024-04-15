@@ -1,11 +1,12 @@
-package com.example.hellosunshine.Database;
+package com.example.hellosunshine.Database.repositories;
 
 import android.app.Application;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.hellosunshine.entities.Child;
-import com.example.hellosunshine.entities.User;
+import com.example.hellosunshine.Database.HelloSunshineDB;
+import com.example.hellosunshine.Database.daos.ChildDAO;
+import com.example.hellosunshine.Database.entities.Child;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class ChildRepository {
     // dependency. This adds complexity and much more code, and this sample is not about testing.
     // See the BasicSample in the android-architecture-components repository at
     // https://github.com/googlesamples
-    ChildRepository(Application application) {
+    public ChildRepository(Application application) {
         HelloSunshineDB db = HelloSunshineDB.getDatabase(application);
         mChildDao = db.childDao();
         mAllChild = mChildDao.getAlphabetizedChildren();
@@ -25,13 +26,13 @@ public class ChildRepository {
 
     // Room executes all queries on a separate thread.
     // Observed LiveData will notify the observer when the data has changed.
-    LiveData<List<Child>> getAllChildren() {
+    public LiveData<List<Child>> getAllChildren() {
         return mAllChild;
     }
 
     // You must call this on a non-UI thread or your app will throw an exception. Room ensures
     // that you're not doing any long running operations on the main thread, blocking the UI.
-    void insert(Child child) {
+    public void insert(Child child) {
         HelloSunshineDB.databaseWriteExecutor.execute(() -> {
             mChildDao.addChild(child);
         });

@@ -1,4 +1,4 @@
-package com.example.hellosunshine.Database;
+package com.example.hellosunshine.Database.viewmodels;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.ViewModel;

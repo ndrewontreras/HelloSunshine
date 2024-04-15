@@ -1,16 +1,14 @@
-package com.example.hellosunshine.activites;
+package com.example.hellosunshine.activites.login;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -18,19 +16,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.hellosunshine.Database.AuthViewModel;
-import com.example.hellosunshine.Database.UserViewModel;
+import com.example.hellosunshine.Database.viewmodels.AuthViewModel;
 import com.example.hellosunshine.Database.HelloSunshineDB;
-import com.example.hellosunshine.Database.UserDAO;
 import com.example.hellosunshine.R;
-import com.example.hellosunshine.entities.User;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
+import com.example.hellosunshine.activites.home.HomeActivity;
+import com.example.hellosunshine.activites.register.RegisterActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     EditText username;
     EditText password;
@@ -41,8 +35,6 @@ public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth mAuth;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -50,10 +42,7 @@ public class MainActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        //getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
-        //getActionBar().hide();
+        setContentView(R.layout.activity_login);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -78,23 +67,6 @@ public class MainActivity extends AppCompatActivity {
         helloSunshineDB = Room.databaseBuilder(getApplicationContext(), HelloSunshineDB.class,
                 "HelloSunshineDB").addCallback(myCallback).build();
 
-        //addCallback(myCallback)
-        User testUser = new User("test1@email.com", "testpass1", "Test Name1");
-        UserViewModel viewModel = ViewModelProviders.of(this).get(UserViewModel.class);
-        viewModel.insert(testUser);
-        viewModel.getAllUsers().observe(this, userList -> {
-                Log.d("usersTest", ": " + userList.size());
-
-                for(User list: userList) {
-                    Log.d("userText full name and email", list.getFullName() + " " + list.getEmail());
-                }
-
-                });
-
-
-
-
-
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,60 +79,25 @@ public class MainActivity extends AppCompatActivity {
                     //startActivity(new Intent(MainActivity.this, HomeActivity.class));
                 }
 
-                /*
-                mAuth.signInWithEmailAndPassword(uname, pword)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                                    // Sign in success, update UI with the signed-in user's information
-                                    if(user != null) {
-                                        UserDAO userDAO = HelloSunshineDB.getDatabase(MainActivity.this).userDao();
-                                        User userData = userDAO.getUserByName(user.getEmail());
-                                        Toast.makeText(getApplicationContext(), "Logged In", Toast.LENGTH_SHORT).show();
-                                    }
-
-
-                                } else {
-                                    // If sign in fails, display a message to the user.
-                                    Toast.makeText(MainActivity.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
-
-                                }
-                            }
-                        });
-
-                 */
-
-                AuthViewModel authViewModel = new ViewModelProvider(MainActivity.this).get(AuthViewModel.class);
-
+                AuthViewModel authViewModel = new ViewModelProvider(LoginActivity.this).get(AuthViewModel.class);
                 authViewModel.loginUser(uname, pword, task -> {
                     if (task.isSuccessful()) {
                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                         Toast.makeText(getApplicationContext(), "Logged in", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                     } else {
                         Exception e = task.getException();
                         Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
-
-
             }
-
-
         });
 
          register.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 startActivity(new Intent(MainActivity.this, RegisterActivity.class));
+                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class).putExtra("email", username.getText().toString()));
              }
          });
     }
-
-    public void login(View v) {
-
-    }
-
 }

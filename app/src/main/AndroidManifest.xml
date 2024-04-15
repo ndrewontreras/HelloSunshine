@@ -13,16 +13,16 @@
         android:theme="@style/Theme.HelloSunshine"
         tools:targetApi="31">
         <activity
-            android:name=".activites.NewUserChildActivity"
+            android:name=".activites.register.NewUserChildActivity"
             android:exported="false" />
         <activity
-            android:name=".activites.RegisterConActivity"
+            android:name=".activites.home.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".activites.RegisterActivity"
+            android:name=".activites.register.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".activites.MainActivity"
+            android:name=".activites.login.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
