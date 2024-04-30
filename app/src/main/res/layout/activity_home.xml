@@ -1,14 +1,213 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_background"
+    android:background="@drawable/homebackb"
     android:gravity="top"
     android:orientation="vertical"
     tools:context=".activites.home.HomeActivity">
 
+    <LinearLayout
+        android:id="@+id/introText"
+        android:layout_width="match_parent"
+        android:layout_height="410dp"
+        android:gravity="top"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/home_hello_text"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/font"
+            android:text="hello,"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="39dp" />
+
+        <TextView
+            android:id="@+id/home_name"
+            android:layout_width="match_parent"
+            android:layout_height="115dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/font"
+            android:text="name"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="60sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="90dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="48dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:fontFamily="@font/font"
+                    android:textAlignment="center"
+                    android:text="00"
+                    android:textColor="@color/white"
+                    android:textSize="40sp"/>
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:fontFamily="@font/font"
+                    android:textAlignment="center"
+                    android:text="years"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:fontFamily="@font/font"
+                    android:textAlignment="center"
+                    android:text="00"
+                    android:textColor="@color/white"
+                    android:textSize="40sp"/>
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:fontFamily="@font/font"
+                    android:textAlignment="center"
+                    android:text="months"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:fontFamily="@font/font"
+                    android:textAlignment="center"
+                    android:text="00"
+                    android:textColor="@color/white"
+                    android:textSize="40sp"/>
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:fontFamily="@font/font"
+                    android:textAlignment="center"
+                    android:text="days"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"/>
+            </LinearLayout>
 
 
-</LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/homeScrollView"
+        android:layout_width="354dp"
+        android:layout_height="294dp"
+        android:layout_below="@id/introText"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/font"
+                android:text="tip of the day"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="30sp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginTop="20dp"
+                android:text="live in the now!"
+                android:fontFamily="@font/font"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"/>
+            <TextView
+                android:id="@+id/tipOfDayText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:text="You hereby have permission to stop worrying about your checklist—doing the laundry, pumping, buying diapers—and learn to be present with your baby. Enjoy your precious moments together. —Wayne Fleisig, Ph.D."
+                android:fontFamily="@font/font"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="15sp"/>
+
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/childImageHome"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="260dp"
+        android:layout_marginRight="260dp"
+        android:layout_marginBottom="35dp"
+        android:src="@drawable/baseline_child_care_24" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/listImageHome"
+        android:layout_width="55dp"
+        android:layout_height="45dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="170dp"
+        android:layout_marginRight="170dp"
+        android:layout_marginBottom="37dp"
+        android:src="@drawable/baseline_format_list_bulleted_24" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/logoutImageHome"
+        android:layout_width="55dp"
+        android:layout_height="45dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="80dp"
+        android:layout_marginRight="80dp"
+        android:layout_marginBottom="37dp"
+        android:src="@drawable/baseline_logout_24" />
+
+
+
+
+</RelativeLayout>

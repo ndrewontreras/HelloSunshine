@@ -27,12 +27,15 @@ public interface ChildDAO {
     @Query("select * from child")
     LiveData<List<Child>> getAllChildren();
 
-    @Query ("select * from child where id ==:child_id")
-    User getUser(int child_id);
+    @Query ("select * from child where child_id ==:child_id")
+    Child getChild(int child_id);
 
     @Query("SELECT * FROM child ORDER BY child.f_name ASC")
     LiveData<List<Child>> getAlphabetizedChildren();
 
     @Query("SELECT * FROM child WHERE f_Name = :firstName")
-    User getUserByName(String firstName);
+    Child getChildByName(String firstName);
+
+    @Query("SELECT * FROM child WHERE user_id = :userId")
+    Child getChildByParent(int userId);
 }

@@ -18,7 +18,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @Database(entities = {User.class, Child.class, ShoppingListItem.class, ToDoTasks.class, JournalEntries.class},
-        version = 2)
+        version = 4)
 public abstract class HelloSunshineDB extends RoomDatabase {
     /*
     private static HelloSunshineDB database;
@@ -49,16 +49,10 @@ public abstract class HelloSunshineDB extends RoomDatabase {
             synchronized (HelloSunshineDB.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                                    HelloSunshineDB.class, "HSDatabase")
-                            .build();
+                                    HelloSunshineDB.class, "HSDatabase").build();
                 }
             }
         }
         return INSTANCE;
     }
-
-
-
-
-
 }

@@ -24,4 +24,8 @@ public class ChildViewModel extends AndroidViewModel {
     public LiveData<List<Child>> getAllChildren() { return mAllChild; }
 
     public void insert(Child child) { mRepository.insert(child); }
+
+    public Child getChildByParent(int userId) {
+        return mRepository.getChildByParent(userId);
+    }
 }

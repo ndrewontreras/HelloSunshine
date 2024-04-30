@@ -52,7 +52,6 @@ public class RegisterActivity extends AppCompatActivity {
                 Toast.makeText(RegisterActivity.this, "Please enter an email", Toast.LENGTH_SHORT).show();
             } else {
                 startActivity(new Intent(RegisterActivity.this, NewUserChildActivity.class).putExtra("newAccountInfo", new String[]{fName, emailAdd, pass}));
-                finish();
             }
         });
     }

@@ -12,7 +12,7 @@ import java.util.List;
 
 public class UserRepository {
     private UserDAO mUserDao;
-    private LiveData<List<User>> mAllUsers;
+    private List<User> mAllUsers;
 
     // Note that in order to unit test the WordRepository, you have to remove the Application
     // dependency. This adds complexity and much more code, and this sample is not about testing.
@@ -26,7 +26,7 @@ public class UserRepository {
 
     // Room executes all queries on a separate thread.
     // Observed LiveData will notify the observer when the data has changed.
-    public LiveData<List<User>> getAllUsers() {
+    public List<User> getAllUsers() {
         return mAllUsers;
     }
 
@@ -36,5 +36,9 @@ public class UserRepository {
         HelloSunshineDB.databaseWriteExecutor.execute(() -> {
             mUserDao.addUser(user);
         });
+    }
+
+    public User getUserByEmail(String email) {
+        return mUserDao.getUserByName(email);
     }
 }

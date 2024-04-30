@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData;
 import com.example.hellosunshine.Database.HelloSunshineDB;
 import com.example.hellosunshine.Database.daos.ChildDAO;
 import com.example.hellosunshine.Database.entities.Child;
+import com.example.hellosunshine.Database.entities.User;
 
 import java.util.List;
 
@@ -36,5 +37,9 @@ public class ChildRepository {
         HelloSunshineDB.databaseWriteExecutor.execute(() -> {
             mChildDao.addChild(child);
         });
+    }
+
+    public Child getChildByParent(int userId) {
+        return mChildDao.getChildByParent(userId);
     }
 }

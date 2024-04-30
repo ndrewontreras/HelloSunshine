@@ -3,6 +3,7 @@ package com.example.hellosunshine.Database.entities;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
@@ -13,6 +14,7 @@ import java.io.Serializable;
 public class Child implements Serializable {
 
     @PrimaryKey (autoGenerate = true)
+    @ColumnInfo (name="child_id")
     int id = 0;
 
     @ColumnInfo (name = "f_name")
@@ -28,17 +30,19 @@ public class Child implements Serializable {
     boolean gender = false;
 
     @ColumnInfo (name = "user_id")
-    int userId;
+    int userId = 0;
 
     public Child() {
 
     }
 
-    public Child(String fName, String nickname, String age, Boolean gender) {
-        this.name = fName;
+    @Ignore
+    public Child(String name, String nickname, String age, Boolean gender, int userId) {
+        this.name = name;
         this.nickname = nickname;
         this.age = age;
         this.gender = gender;
+        this.userId = userId;
     }
 
     public int getId() {
@@ -53,7 +57,7 @@ public class Child implements Serializable {
         return name;
     }
 
-    public void setName(String fName) {
+    public void setName(String name) {
         this.name = name;
     }
 
