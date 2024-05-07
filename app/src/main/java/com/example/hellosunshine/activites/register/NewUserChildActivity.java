@@ -15,17 +15,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.hellosunshine.Database.HelloSunshineDB;
-import com.example.hellosunshine.Database.daos.ChildDAO;
-import com.example.hellosunshine.Database.daos.UserDAO;
-import com.example.hellosunshine.Database.entities.Child;
 import com.example.hellosunshine.Database.viewmodels.AuthViewModel;
 import com.example.hellosunshine.Database.viewmodels.ChildViewModel;
 import com.example.hellosunshine.Database.viewmodels.UserViewModel;
 import com.example.hellosunshine.R;
 import com.example.hellosunshine.Database.entities.User;
 import com.example.hellosunshine.activites.home.HomeActivity;
-import com.example.hellosunshine.activites.login.LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -78,10 +73,7 @@ public class NewUserChildActivity extends AppCompatActivity {
         registerBtn.setOnClickListener(v -> {
             String cName = childName.getText().toString();
             String cNickname = childNickname.getText().toString();
-            String cDate = (childDay.getText().toString() + "/" + childMonth.getText().toString() + "/" + childYear.getText().toString());
-            String cDay = childDay.getText().toString();
-            String cMonth = childMonth.getText().toString();
-            String cYear = childYear.getText().toString();
+            String cDate = (childMonth.getText().toString() + "/" + childDay.getText().toString() + "/" + childYear.getText().toString());
             Boolean cGender = genderSwitch.isActivated();
 
             String fName = values[0];
@@ -94,68 +86,30 @@ public class NewUserChildActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                     AsyncTask.execute(() -> {
-                        addNewChild();
+                        addNewUser();
                     });
                     Toast.makeText(getApplicationContext(), "New User created", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(NewUserChildActivity.this, HomeActivity.class).putExtra("newChild", new String[]{childName.getText().toString(), childNickname.getText().toString(),
-                            childYear.getText().toString(), email}).putExtra("gender", genderSwitch.isActivated()).putExtra("flag", "NC"));
+                    startActivity(new Intent(NewUserChildActivity.this, HomeActivity.class).putExtra("newChild", new String[]{cName, cNickname,
+                            cDate, email}).putExtra("gender", cGender).putExtra("flag", "NC").putExtra("email", email));
                 } else {
                     Exception e = task.getException();
                     Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
-
-
-
-           /*
-            if (cName.length() == 0) {
-
-                Toast toast = Toast.makeText(NewUserChildActivity.this, "Name?", Toast.LENGTH_SHORT);
-                toast.show();
-            } else {
-                startActivity(new Intent(NewUserChildActivity.this, NewUserChildActivity.class).putExtra("newChildInfo", new
-                String[]{fName, email, pass, cName, cNickname, cDate, cDay, cMonth, cYear}));
-            }
-
-            */
-
         });
     }
 
-    private void addNewChild() {
-
+    private void addNewUser() {
         Intent intent = getIntent();
         String[] values = intent.getStringArrayExtra("newAccountInfo");
         String fName = values[0];
         String email = values[1];
         String pass = values[2];
-
-        String cName = childName.getText().toString();
-        String cNickname = childNickname.getText().toString();
-        String cDate = (childDay.getText().toString() + "/" + childMonth.getText().toString() + "/" + childYear.getText().toString());
-        String cDay = childDay.getText().toString();
-        String cMonth = childMonth.getText().toString();
-        String cYear = childYear.getText().toString();
-        Boolean cGender = genderSwitch.isActivated();
         addNewUser(email, pass, fName);
-        Log.d("New User?", testNewUser(userViewModel.getUserByEmail(email)));
-        /*
-        Child newChild = new Child(cName, cNickname, cDate, cGender, userViewModel.getUserByEmail(email).getId());
-        ChildDAO childDAO = HelloSunshineDB.getDatabase(getApplicationContext()).childDao();
-        childDAO.addChild(newChild);
-         */
     }
 
     private void addNewUser(String email, String password, String fullName) {
         newUser = new User(email, password, fullName);
         userViewModel.insert(newUser);
-    }
-
-    private String testNewUser(User user) {
-        if(user == null) {
-            return "No email :(";
-        } else {
-            return "User email retrieval works: " + userViewModel.getUserByEmail(user.getEmail());
-        }
     }
 }

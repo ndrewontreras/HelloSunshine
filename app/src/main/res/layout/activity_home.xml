@@ -51,6 +51,7 @@
                 android:layout_marginLeft="48dp"
                 android:orientation="vertical">
                 <TextView
+                    android:id="@+id/years"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:fontFamily="@font/font"
@@ -74,6 +75,7 @@
                 android:layout_height="100dp"
                 android:orientation="vertical">
                 <TextView
+                    android:id="@+id/months"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:fontFamily="@font/font"
@@ -97,6 +99,7 @@
                 android:layout_height="100dp"
                 android:orientation="vertical">
                 <TextView
+                    android:id="@+id/days"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:fontFamily="@font/font"
@@ -145,6 +148,7 @@
                 android:textColor="@color/white"
                 android:textSize="30sp" />
             <TextView
+                android:id="@+id/todTitle"
                 android:layout_width="match_parent"
                 android:layout_height="25dp"
                 android:layout_marginTop="20dp"
@@ -154,7 +158,7 @@
                 android:textColor="@color/white"
                 android:textSize="18sp"/>
             <TextView
-                android:id="@+id/tipOfDayText"
+                android:id="@+id/todDesc"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="5dp"
@@ -178,9 +182,9 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="260dp"
+        android:layout_marginEnd="265dp"
         android:layout_marginRight="260dp"
-        android:layout_marginBottom="35dp"
+        android:layout_marginBottom="39dp"
         android:src="@drawable/baseline_child_care_24" />
 
     <com.google.android.material.imageview.ShapeableImageView
@@ -190,9 +194,9 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="170dp"
+        android:layout_marginEnd="177dp"
         android:layout_marginRight="170dp"
-        android:layout_marginBottom="37dp"
+        android:layout_marginBottom="41dp"
         android:src="@drawable/baseline_format_list_bulleted_24" />
 
     <com.google.android.material.imageview.ShapeableImageView
@@ -204,7 +208,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="80dp"
         android:layout_marginRight="80dp"
-        android:layout_marginBottom="37dp"
+        android:layout_marginBottom="41dp"
         android:src="@drawable/baseline_logout_24" />
 
 
