@@ -53,8 +53,6 @@ public class HomeActivity extends AppCompatActivity {
 
     ScrollView homeScrollView;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -78,9 +76,6 @@ public class HomeActivity extends AppCompatActivity {
         todTitle = findViewById(R.id.todTitle);
         todDesc = findViewById(R.id.todDesc);
 
-
-
-
         Intent intent = getIntent();
 
         String checkFlag = intent.getStringExtra("flag");
@@ -96,7 +91,6 @@ public class HomeActivity extends AppCompatActivity {
                 childNameText.setText(values[0]);
                 getAge(parentEmail);
                 setTOD();
-                //Log.d("Child name", tempChild.getName());
             });
         } else if(checkFlag.equals("LG")) {
             String parentEmail = intent.getStringExtra("email");
@@ -125,50 +119,6 @@ public class HomeActivity extends AppCompatActivity {
             dialog.show();
 
         });
-
-
-
-
-        //childNameText.setText(childViewModel.getChildByParent(userViewModel.getUserByEmail(parentEmail).getId()).getName());
-
-        //Loop through live data list, can't cast to basic list
-
-        /*
-        List<User> allUsers = new UserViewModel(getApplication()).getAllUsers();
-
-        for(User user : allUsers) {
-
-            /*if(user.getEmail().equals(mAuth.getCurrentUser().getEmail())) {
-                childNameText.setText(new ChildViewModel(getApplication()).getChildByParent(user.getId()).getName());
-            }
-
-             */
-         /*   Log.d("childs", new ChildViewModel(getApplication()).getChildByParent(user.getId()).getName());
-        }
-
-          */
-
-
-
-        /*
-        Intent intent = getIntent();
-        String[] values = intent.getStringArrayExtra("newChildInfo");
-        boolean gender = intent.getBooleanExtra("gender", false);
-
-
-        child = new Child(values[3], values[4], values[5], gender);
-        ChildViewModel viewModel1 = new ViewModelProvider(HomeActivity.this).get(ChildViewModel.class);
-        viewModel1.insert(child);
-
-
-        //System.out.println(user.getFullName() + " " + user.getUName() + " " + user.getEmail() + " " + child.getNickname() + " Child ID: " + child.getId());
-
-
-        intent.putExtra("new user", user);
-        intent.putExtra("new child", child);
-        setResult(Activity.RESULT_OK, intent);
-         */
-
     }
 
     private void getAge(String email) {

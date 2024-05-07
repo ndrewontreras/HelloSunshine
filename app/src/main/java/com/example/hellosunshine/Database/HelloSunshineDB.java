@@ -22,20 +22,6 @@ import java.util.concurrent.Executors;
 @Database(entities = {User.class, Child.class, ShoppingListItem.class, ToDoTasks.class, JournalEntries.class, TipOfTheDay.class},
         version = 5)
 public abstract class HelloSunshineDB extends RoomDatabase {
-    /*
-    private static HelloSunshineDB database;
-    private static String DATABASE_NAME = "HelloSunshineApp";
-
-    /*
-    public synchronized static HelloSunshineDB getInstance(Context context) {
-
-        if(database == null) {
-
-        }
-        return null;
-    }
-
-     */
 
     public abstract UserDAO userDao();
 

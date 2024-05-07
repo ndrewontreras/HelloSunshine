@@ -26,7 +26,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class NewUserChildActivity extends AppCompatActivity {
 
-    EditText childName, childNickname, childDay, childMonth, childYear, childGender;
+    EditText childName, childNickname, childDay, childMonth, childYear;
 
     Button registerBtn;
 
